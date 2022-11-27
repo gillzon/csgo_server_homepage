@@ -8,7 +8,9 @@ media
 
 __pycache__/
 *.py[cod]
-
+# Staticfiles # 
+/staticfiles
+staticfiles
 # Backup files # 
 *.bak 
 /db
