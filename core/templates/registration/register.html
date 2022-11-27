@@ -1,0 +1,38 @@
+{% load bootstrap5 %}
+{% load static %}
+
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<html>
+  <link rel="stylesheet" href="{% static 'main.css' %}">
+  <script src="{% static 'nav.js' %}"></script>
+<head>
+<div class="sidenav">
+    <div class="login-main-text">
+       <h2>Tallin98 - Official CS:GO Server<br> Login Page</h2>
+       <p>Login or register from here to access.</p>
+    </div>
+ </div>
+ <div class="main">
+    <div class="col-md-6 col-sm-12">
+       <div class="login-form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Register</button>
+            <p><a href="{% url 'login' %}">Login</a></p>
+             <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+          </form>
+       </div>
+    </div>
+ </div>
+
+
+{% endblock %}

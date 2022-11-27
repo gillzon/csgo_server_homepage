@@ -1,0 +1,89 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Statistics for player {{obj.name}}
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <h5 class="card-title">Score: {{obj.score}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Kills: {{obj.kills}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Deaths: {{obj.deaths}}</h5>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h5 class="card-title">Assists: {{obj.assists}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Suicides: {{obj.suicides}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Team Kills: {{obj.tk}}</h5>
+                    </div>
+                </div>
+                <div class="row align-items-end">
+                    <div class="col">
+                        <h5 class="card-title">Shots: {{obj.shots}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Hits: {{obj.hits}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Headshots: {{obj.headshots}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <h5 class="card-title">Rounds Terrorists: {{obj.rounds_tr}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Rounds Counter-Terrorists: {{obj.rounds_ct}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Knife: {{obj.knife}}</h5>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h5 class="card-title">Glock: {{obj.glock}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Hkp2000: {{obj.hkp2000}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">USP Silencer: {{obj.usp_silencer}}</h5>
+                    </div>
+                </div>
+                <div class="row align-items-end">
+                    <div class="col">
+                        <h5 class="card-title">P250: {{obj.p250}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Deagle: {{obj.deagle}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title">Elite: {{obj.elite}}</h5>
+                    </div>
+                    {% for name, value in obj.get_fields %}
+                    <h5 class="card-title">{{name}}: {{value}}</h5>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

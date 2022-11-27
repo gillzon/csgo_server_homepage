@@ -1,0 +1,65 @@
+
+
+  <!-- templates/home.html -->
+  {% extends 'base.html' %}
+
+  {% block title %}Dashboard{% endblock %}
+  
+  {% block content %}
+  
+
+  
+  {# Display a form #}
+
+  <div class="container">
+    <div class="card">
+        <div class="card-header">
+        Tallin98 CSGO server statistics
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Kills</th>
+                  <th scope="col">Deaths</th>
+                  <th scope="col">Assists</th>
+                  <th scope="col">headshots</th>
+                </tr>
+              </thead>
+              <tbody>
+         
+          {% for player in obj.object_list %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td><a href="{% url 'core:player_details' player.id %}">{{player.name}}</a></td>
+            <td>{{player.score}}</td>
+            <td>{{player.kills}}</td>
+            <td>{{player.deaths}}</td>
+            <td>{{player.assists}}</td>
+            <td>{{player.headshots}}</td>
+          </tr>
+          {% endfor %}
+          Total: {{obj.object_list.count}}
+        </tbody>
+        <div>
+          <span>
+            {% if obj.has_previous %}
+              <a href="?page={{ obj.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span>
+              Page {{ obj.number }} of {{ obj.paginator.num_pages }}.
+            </span>
+            {% if obj.has_next %}
+              <a href="?page={{ obj.next_page_number }}">Next</a>
+            {% endif %}
+          </span>
+        </div>
+    </table>
+          
+        </div>
+      </div>
+  </div>
+  {% endblock %}
