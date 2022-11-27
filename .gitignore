@@ -6,6 +6,7 @@ __pycache__
 db.sqlite3
 media
 docker-compose.yml
+/docker-compose.yml
 __pycache__/
 *.py[cod]
 # Staticfiles # 
