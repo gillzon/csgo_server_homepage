@@ -12,8 +12,9 @@ services:
     ports:
       - "8002:8000"
     environment:
-      - DB_HOST=db
-      - DB_NAME=uniship
-      - DB_USER=uniship
-      - DB_PASS=KLSKDFLSK!##jkslö=)
-      - DB_PORT=5433
+      - DB_HOST=db_host_ip
+      - DB_NAME=steam
+      - DB_USER=root
+      - DB_PASS=dbpassword
+      - DB_PORT=dbport
+      - DJANGO_SECRET_KEY=django_secret_key

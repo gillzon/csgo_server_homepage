@@ -29,13 +29,17 @@ def register(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            try:
+                print("try")
+            except:
+                print("balle")
             return redirect('core:home')
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
 
-def view_user(request, id):
+def player_detailed_view(request, id):
     player = Rankme.objects.get(id=id)
     ctx = {'obj': player}
     print(dir(player))
