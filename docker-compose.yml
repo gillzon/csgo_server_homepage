@@ -12,9 +12,10 @@ services:
     ports:
       - "8002:8000"
     environment:
-      - DB_HOST=db_host_ip
+      - DB_HOST=192.168.1.205
       - DB_NAME=steam
       - DB_USER=root
-      - DB_PASS=dbpassword
-      - DB_PORT=dbport
-      - DJANGO_SECRET_KEY=django_secret_key
+      - DB_PASS=a+4DvGLh
+      - DB_PORT=49190
+      - DJANGO_SECRET_KEY=)*998_z!s#bz11r8y!1c9lm78d+b*&*k4f1q(&)!z75+y@#*2-
+      - SERVER_IP=2.249.122.13:27015

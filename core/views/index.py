@@ -1,5 +1,7 @@
+import os
 from django.shortcuts import render, redirect
 from core.models.rankme import Rankme
+from core.models.user import CustomUser
 # Create your views here.
 # Create your views here.
 from django.core.paginator import Paginator
@@ -29,10 +31,6 @@ def register(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            try:
-                print("try")
-            except:
-                print("balle")
             return redirect('core:home')
     else:
         form = UserCreationForm()
@@ -44,3 +42,16 @@ def player_detailed_view(request, id):
     ctx = {'obj': player}
     print(dir(player))
     return render(request, 'player/details.html', context=ctx)
+
+
+def server_info(request):
+    server_ip = os.environ['SERVER_IP']
+    ctx = {'SERVER_IP': server_ip}
+    return render(request, 'server/info.html', context=ctx)
+
+
+def user_profile(request):
+    user = CustomUser.objects.get(id=request.user.id)
+    print(user)
+    ctx = {'obj': user}
+    return render(request, 'player/profile.html', context=ctx)

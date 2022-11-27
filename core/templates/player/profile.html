@@ -1,0 +1,19 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Player Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Your profile
+        </div>
+        <div class="card-body">
+            <p>Email: {{obj.email}}</p>
+            <p>Username: {{obj.username}}</p>
+            <p>Steam Id: {{obj.steam_id}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

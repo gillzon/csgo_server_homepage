@@ -4,6 +4,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 import uuid
+from core.models.rankme import Rankme
 
 
 class CustomUser(AbstractUser):
@@ -49,3 +50,14 @@ class CustomUser(AbstractUser):
 
     class Meta:
         app_label = "core"
+
+    def save(self, *args, **kwargs):
+        print("FAKKING BEAVER!!!", self)
+        try:
+            # check if players has logged in with username on the server to find steam id
+            player = Rankme.objects.get(name=self.username)
+            self.steam_id = player.steam
+            print(player)
+        except:
+            print("No user was found")
+        super(CustomUser, self).save(*args, **kwargs)
